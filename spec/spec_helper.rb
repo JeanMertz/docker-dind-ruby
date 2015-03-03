@@ -1,6 +1,7 @@
 require 'archive/tar/minitar'
 require 'docker'
 require 'excon'
+require 'json'
 require 'serverspec'
 
 set :backend, :docker
@@ -23,8 +24,12 @@ RSpec.configure do |config|
     Archive::Tar::Minitar.pack(files, tmp, true)
     tar = File.new(tmp.path, 'r')
 
-    image = Docker::Image.build_from_tar(tar, t: config.docker_image_name)
-    config.docker_image = image.id
+    img = Docker::Image.build_from_tar(tar, t: config.docker_image_name) do |l|
+      next unless ENV['VERBOSE']
+      $stdout.print JSON.parse(l)['stream']
+    end
+
+    config.docker_image = img.id
   end
 
   config.docker_container_create_options = {

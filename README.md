@@ -1,6 +1,5 @@
 # blendle/dind-ruby [![Build Status](http://drone.blendle.io/api/badge/github.com/blendle/docker-dind-ruby/status.svg?branch=master)](http://drone.blendle.io/github.com/blendle/docker-dind-ruby)
 
-
 Wrapper around the [jpetazzo/dind][] Docker image.
 
 This image has Ruby pre-installed. It also comes with the Bundler gem installed

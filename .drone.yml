@@ -5,13 +5,17 @@ env:
   - BUNDLE_PATH=/usr/local/bundle
   - BUNDLE_BIN=/usr/local/bundle/bin
   - BUNDLE_APP_CONFIG=/usr/local/bundle
+  - DOCKER_DAEMON_ARGS=--storage-driver=overlay
 script:
+  - wrapdocker &
   - sudo apt-get update -qq
-  - sudo apt-get -y install build-essential ruby
-  - sudo apt-get -y install ruby-dev
+  - sudo apt-get -y -qq install build-essential ruby-dev
   - gem install bundler --no-ri --no-rdoc
   - bundle install --jobs $(nproc) --retry 5
-  - wrapdocker bundle exec rake
+  - VERBOSE=true bundle exec rake
   - start-stop-daemon --stop --pidfile "/var/run/docker.pid"
 cache:
   - /usr/local/bundle
+deploy:
+  bash:
+    command: curl -SSL --data "build=true" -X POST https://registry.hub.docker.com/u/blendle/dind-ruby/trigger/$DOCKER_BUILD_TOKEN
