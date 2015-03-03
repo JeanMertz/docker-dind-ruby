@@ -10,7 +10,8 @@ Excon.defaults[:ssl_verify_peer] = false
 Docker.options = { read_timeout: 600, write_timeout: 600 }
 
 RSpec.configure do |config|
-  image_name = File.basename(File.dirname(__dir__)).sub('docker-', '')
+  dir = File.dirname(__FILE__)
+  image_name = File.basename(File.dirname(dir)).sub('docker-', '')
   config.add_setting :docker_image_name, default: "blendle/#{image_name}:test"
 
   config.before(:suite) do
