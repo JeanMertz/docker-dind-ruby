@@ -7,7 +7,7 @@ env:
   - BUNDLE_APP_CONFIG=/usr/local/bundle
 script:
   - sudo apt-get update -qq
-  - sudo apt-get -y install ruby
+  - sudo apt-get -y install build-essential ruby
   - gem install bundler --no-ri --no-rdoc
   - bundle install --jobs $(nproc) --retry 5
   - wrapdocker bundle exec rake
