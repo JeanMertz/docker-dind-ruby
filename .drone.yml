@@ -8,7 +8,7 @@ env:
 script:
   - sudo apt-get update -qq
   - sudo apt-get -y install ruby
-  - gem install bundler --no-document
+  - gem install bundler --no-ri --no-rdoc
   - bundle install --jobs $(nproc) --retry 5
   - wrapdocker bundle exec rake
   - start-stop-daemon --stop --pidfile "/var/run/docker.pid"
