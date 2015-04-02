@@ -25,7 +25,6 @@ RSpec.configure do |config|
     tar = File.new(tmp.path, 'r')
 
     img = Docker::Image.build_from_tar(tar, t: config.docker_image_name) do |l|
-      next unless ENV['VERBOSE']
       $stdout.print JSON.parse(l)['stream']
     end
 
