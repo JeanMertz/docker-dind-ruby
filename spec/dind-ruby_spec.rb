@@ -20,7 +20,10 @@ describe RSpec.configuration.docker_image_name do
   end
 
   describe command('wrapdocker docker version') do
-    its(:stdout) { is_expected.to include('Client version: 1.5.0') }
-    its(:stdout) { is_expected.to include('Server version: 1.5.0') }
+    its(:stdout) { is_expected.to include('Server version: 1.6.2') }
+  end
+
+  describe command('wrapdocker docker version') do
+    its(:stdout) { is_expected.to include('Docker version 1.6.2') }
   end
 end
