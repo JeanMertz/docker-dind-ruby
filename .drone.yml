@@ -15,6 +15,7 @@ script:
   - start-stop-daemon --stop --pidfile "/var/run/docker.pid"
 cache:
   - /usr/local/bundle
+  - /var/lib/docker
 deploy:
   bash:
     command: curl -sSL --data "build=true" -X POST https://registry.hub.docker.com/u/blendle/dind-ruby/trigger/$DOCKER_BUILD_TOKEN
