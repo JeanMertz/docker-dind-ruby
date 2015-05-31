@@ -32,7 +32,6 @@ RSpec.configure do |config|
   end
 
   config.docker_container_create_options = {
-    'Cmd' => ['/usr/bin/tail', '-f', '/dev/null'], # keep-alive
     'HostConfig' => {
       'Privileged' => true
     }

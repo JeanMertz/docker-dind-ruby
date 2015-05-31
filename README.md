@@ -1,4 +1,4 @@
-# blendle/dind-ruby [![Build Status](http://drone.blendle.io/api/badge/github.com/blendle/docker-dind-ruby/status.svg?branch=master)](http://drone.blendle.io/github.com/blendle/docker-dind-ruby)
+# blendle/dind-ruby [![Build Status](http://ci.blendle.io/api/badge/github.com/blendle/docker-dind-ruby/status.svg?branch=master)](http://ci.blendle.io/github.com/blendle/docker-dind-ruby)
 
 Wrapper around the [jpetazzo/dind][] Docker image.
 
