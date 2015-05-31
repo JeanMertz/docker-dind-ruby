@@ -3,6 +3,7 @@ MAINTAINER Jean Mertz <jean@blendle.com>
 
 ENTRYPOINT ["wrapdocker"]
 
+ENV LOG=file
 VOLUME /var/lib/docker
 
 RUN apk-install iptables ca-certificates lxc e2fsprogs wget docker socat perl \
