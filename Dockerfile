@@ -1,4 +1,4 @@
-FROM blendle/ruby:2.2.2
+FROM blendle/ruby:2.2
 MAINTAINER Jean Mertz <jean@blendle.com>
 
 ENTRYPOINT ["wrapdocker"]

@@ -1,36 +1,16 @@
 require 'spec_helper'
 
-ruby_version = '2.1.3'
-
 describe RSpec.configuration.docker_image_name do
-  describe command('ruby --version') do
-    its(:stdout) { is_expected.to include("ruby #{ruby_version}") }
-  end
-
-  describe file("/opt/rubies/ruby-#{ruby_version}/etc/gemrc") do
-    its(:content) { is_expected.to include('gem: --no-document') }
-  end
-
-  describe command('command -v bundle') do
+  describe command('command -v socat') do
     its(:exit_status) { is_expected.to eq 0 }
   end
 
-  describe command('command -v ruby-install') do
+  describe command('command -v perl') do
     its(:exit_status) { is_expected.to eq 0 }
   end
 
-  context 'Drone CI requirements' do
-    describe command('command -v socat') do
-      its(:exit_status) { is_expected.to eq 0 }
-    end
-
-    describe command('command -v perl') do
-      its(:exit_status) { is_expected.to eq 0 }
-    end
-
-    describe command('command -v nproc') do
-      its(:exit_status) { is_expected.to eq 0 }
-    end
+  describe command('command -v nproc') do
+    its(:exit_status) { is_expected.to eq 0 }
   end
 
   describe command('docker version') do
